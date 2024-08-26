@@ -26,7 +26,6 @@ const AttendanceReport = () => {
   const [selectedEmployeeId, setSelectedEmployeeId] = useState("");
   const [selectedAttendanceId, setSelectedAttendanceId] = useState("");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [refreshData,setRefreshData]=useState("")
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedAttendance, setSelectedAttendance] = useState({});
   const navigate = useNavigate();
