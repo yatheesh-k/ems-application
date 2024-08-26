@@ -3,6 +3,9 @@ pipeline {
     tools {
         gradle 'gradle8'
     }
+     environment {
+        CI = 'false'
+    }    
     stages {
    //     stage('Removing Old Data') {
    //         steps {
