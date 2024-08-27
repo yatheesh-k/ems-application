@@ -38,8 +38,7 @@ pipeline {
             steps {
                 script {
                     sh 'rm -rf /var/www/ems/*'
-                    sh 'cd /opt/ems/ui/build/'
-                    sh 'sudo cp * /var/www/ems/ -R'
+                    sh 'sudo cp -R /opt/ems/ui/build/* /var/www/ems/'
                 }
             }
         }
