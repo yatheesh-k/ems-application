@@ -11,6 +11,7 @@ pipeline {
             steps {
                 script {
                    sh 'sudo rm -rf /opt/ems/identity/* -R'
+                   sh 'sudo ll /opt/ems/identity/'
                    sh 'sudo rm -rf /opt/ems/employee/* -R'
                }
           }
