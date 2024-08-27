@@ -39,7 +39,7 @@ pipeline {
                 script {
                     sh 'rm -rf /var/www/ems/* -R'
                     sh 'chown -R jenkins:jenkins /var/www/ems/'
-                    sh 'sudo cp -R /opt/ems/ui/build/* /var/www/ems/'
+                    sh 'cp -R /opt/ems/ui/build/* /var/www/ems/'
                 }
             }
         }
@@ -48,8 +48,7 @@ pipeline {
                 script {
                     dir('identity') {
                         sh 'gradle clean build'
-                        sh 'cd /var/lib/jenkins/workspace/ems/identity/build'
-                        sh 'cp * /opt/ems/identity/ -R'
+                        sh 'cp -R /var/lib/jenkins/workspace/ems/identity/build/* /opt/ems/identity/'
                     }
                 }
             }
