@@ -37,10 +37,10 @@ pipeline {
         stage('Deploy UI') {
             steps {
                 script {
-                    sh 'chown -R jenkins:jenkins /var/www/ems/'
-                    sh 'rm -rf /var/www/ems/* -R'
-                    sh 'chown -R jenkins:jenkins /var/www/ems/'
-                    sh 'cp -R /opt/ems/ui/build/* /var/www/ems/'
+                    sh 'sudo chown -R jenkins:jenkins /var/www/ems/'
+                    sh 'sudo rm -rf /var/www/ems/* -R'
+                    sh 'sudo chown -R jenkins:jenkins /var/www/ems/'
+                    sh 'sudo cp -R /opt/ems/ui/build/* /var/www/ems/'
                 }
             }
         }
@@ -49,7 +49,7 @@ pipeline {
                 script {
                     dir('identity') {
                         sh 'gradle clean build'
-                        sh 'cp -R /var/lib/jenkins/workspace/ems/identity/build/* /opt/ems/identity/'
+                        sh 'sudo cp -R /var/lib/jenkins/workspace/ems/identity/build/* /opt/ems/identity/'
                     }
                 }
             }
