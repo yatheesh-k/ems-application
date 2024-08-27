@@ -7,15 +7,15 @@ pipeline {
         CI = 'false'
     }    
     stages {
-   //     stage('Removing Old Data') {
-   //         steps {
-   //             script {
-    //                sh 'rm -rf /opt/ems/ui/*'
-     //               sh 'rm -rf /opt/ems/identity/*'
-      //              sh 'rm -rf /opt/ems/employee/*'
-      //          }
-       //     }
-      //  }
+        stage('Removing Old Data') {
+            steps {
+                script {
+                   sh 'sudo rm -rf /opt/ems/ui/* -R'
+                   sh 'sudo rm -rf /opt/ems/identity/* -R'
+                   sh 'sudo rm -rf /opt/ems/employee/* -R'
+               }
+          }
+       }
         stage('Install Dependencies') {
             steps {
                 script {
