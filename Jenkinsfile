@@ -72,14 +72,14 @@ pipeline {
                 }
             }
         }
- //       stage('Package Employee') {
-   //         steps {
-     //           script {
-       //             dir('employee') {
-         //               sh 'gradle assemble'
-           //         }
-//                }
-  //          }
-    //    }
+       stage('Package Employee') {
+            steps {
+               script {
+                   dir('employee') {
+                     sh 'gradle assemble'
+               }
+            }
+         }
+      }
     }
 }
