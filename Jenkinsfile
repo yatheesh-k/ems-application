@@ -37,8 +37,8 @@ pipeline {
         stage('Deploy UI') {
             steps {
                 script {
-                    sh 'chown -R jenkins:jenkins /var/www/ems/'
                     sh 'rm -rf /var/www/ems/* -R'
+                    sh 'chown -R jenkins:jenkins /var/www/ems/'
                     sh 'sudo cp -R /opt/ems/ui/build/* /var/www/ems/'
                 }
             }
