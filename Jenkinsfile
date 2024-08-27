@@ -10,7 +10,6 @@ pipeline {
         stage('Removing Old Data') {
             steps {
                 script {
-                   sh 'sudo rm -rf /opt/ems/ui/* -R'
                    sh 'sudo rm -rf /opt/ems/identity/* -R'
                    sh 'sudo rm -rf /opt/ems/employee/* -R'
                }
@@ -40,7 +39,7 @@ pipeline {
                     sh 'sudo chown -R jenkins:jenkins /var/www/ems/'
                     sh 'sudo rm -rf /var/www/ems/* -R'
                     sh 'sudo chown -R jenkins:jenkins /var/www/ems/'
-                    sh 'sudo cp -R /opt/ems/ui/build/* /var/www/ems/'
+                    sh 'sudo cp -R /var/lib/jenkins/workspace/ems/ui/build/* /var/www/ems/'
                 }
             }
         }
