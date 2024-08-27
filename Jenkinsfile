@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy UI') {
             steps {
                 script {
-                    sh 'rm -rf /var/www/ems/*'
+                    sh 'rm -rf /var/www/ems/* -R'
                     sh 'sudo cp -R /opt/ems/ui/build/* /var/www/ems/'
                 }
             }
