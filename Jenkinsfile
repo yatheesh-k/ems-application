@@ -68,8 +68,7 @@ pipeline {
                 script {
                     dir('employee') {
                         sh 'gradle clean build'
-                        sh 'cd /var/lib/jenkins/workspace/ems/employee/build'
-                        sh 'cp * /opt/ems/employee/ -R'
+                        sh 'sudo cp -R /var/lib/jenkins/workspace/ems/employee/build/* /opt/ems/employee/'
                     }
                 }
             }
