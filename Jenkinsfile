@@ -7,6 +7,11 @@ pipeline {
         CI = 'false'
     }    
     stages {
+         stage('Checkout') {
+            steps {
+               git credentialsId: 'git_cred', url: 'https://github.com/saidasari06/ems_practise.git'
+            }
+         }                
         stage('Removing Old Data') {
             steps {
                 script {
