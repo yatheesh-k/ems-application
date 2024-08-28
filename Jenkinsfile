@@ -9,7 +9,7 @@ pipeline {
     stages {
          stage('Checkout') {
             steps {
-               git credentialsId: 'git_cred', url: 'https://github.com/saidasari06/ems_practise.git'
+               git credentialsId: 'git_cred', url: 'https://github.com/saidasari06/ems_practise.git', branch: 'main'
             }
          }                
         stage('Removing Old Data') {
