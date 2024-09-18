@@ -14,7 +14,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '11'  # Specify the Java version
+          java-version: '21'  # Specify the Java version
           distribution: 'adopt'
 
       - name: List directory contents
