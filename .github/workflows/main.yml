@@ -14,13 +14,14 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '11'  # Adjust if you need a different version
+          java-version: '21'
           distribution: 'adopt'
 
+      - name: List directory contents
+        run: ls -al employee  # This will show what's in the employee directory
+
       - name: Build with Maven
-        run: mvn install
-        working-directory: employee  # Specify the directory containing pom.xml
+        run: mvn install -f employee/pomxml  # Specify the pomxml file explicitly
 
       - name: Run tests
-        run: mvn test
-        working-directory: employee  # Specify the directory containing pom.xml
+        run: mvn test -f employee/pomxml  # Specify the pomxml file explicitly
