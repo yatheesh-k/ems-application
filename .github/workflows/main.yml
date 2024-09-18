@@ -1,8 +1,16 @@
 name: Java Automatic Testing
 
-on: pull_request
+on:
+push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+workflow_dispatch
 
 jobs:
+build :
+
   run-gradle-tests:
     name: Gradle Tests
     runs-on: ubuntu-latest
