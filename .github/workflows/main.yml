@@ -3,25 +3,25 @@ name: Java Automatic Testing
 on: pull_request
 
 jobs:
-  run-java-tests:
-    name: Java Tests
+  run-gradle-tests:
+    name: Gradle Tests
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Updated to the latest version
 
       - name: Set up JDK
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
-          java-version: '21'
+          java-version: '11'  # Specify the Java version
           distribution: 'adopt'
 
       - name: List directory contents
-        run: ls -alR employee  # This will show what's in the employee directory
+        run: ls -al employee  # Show contents of employee directory
 
-      - name: Build with Maven
-        run: mvn install -f employee/pomxml  # Specify the pomxml file explicitly
+      - name: Build with Gradle
+        run: ./gradlew build  # Use the Gradle wrapper to build
 
       - name: Run tests
-        run: mvn test -f employee/pomxml  # Specify the pomxml file explicitly
+        run: ./gradlew test  # Use the Gradle wrapper to run tests
