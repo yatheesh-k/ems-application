@@ -1,0 +1,24 @@
+name: Java Automatic Testing
+
+on: pull_request
+
+jobs:
+  run-java-tests:
+    name: Java Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '21'  # Specify the Java version you want
+          distribution: 'adopt'  # You can also use 'zulu' or other distributions
+
+      - name: Build with Maven
+        run: mvn install
+
+      - name: Run tests
+        run: mvn test
