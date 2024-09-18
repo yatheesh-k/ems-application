@@ -14,11 +14,13 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '21'  # Specify the Java version you want
-          distribution: 'adopt'  # You can also use 'zulu' or other distributions
+          java-version: '11'  # Adjust if you need a different version
+          distribution: 'adopt'
 
       - name: Build with Maven
         run: mvn install
+        working-directory: employee  # Specify the directory containing pom.xml
 
       - name: Run tests
         run: mvn test
+        working-directory: employee  # Specify the directory containing pom.xml
