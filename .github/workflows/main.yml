@@ -1,27 +1,61 @@
-name: Java Automatic Testing
+name: Java CI with Gradle
 
-on: pull_request
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  run-gradle-tests:
-    name: Gradle Tests
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3  # Updated to the latest version
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
         with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+
           java-version: '21'  # Specify the Java version
           distribution: 'adopt'
 
-      - name: List directory contents
-        run: ls -al employee  # Show contents of employee directory
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
 
-      - name: Build with Gradle
-        run: ./gradlew build  # Use the Gradle wrapper to build
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
+
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build
 
       - name: Run tests
-        run: ./gradlew test  # Use the Gradle wrapper to run tests
+        run: ./gradlew test
+
+  dependency-submission:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      # Only include this step once
+      - name: Generate and submit dependency graph
+        uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582
+
