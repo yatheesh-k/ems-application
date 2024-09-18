@@ -2,7 +2,6 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { useLocation, useHistory, useNavigate } from 'react-router-dom';
 
 const SalaryContext = createContext();
-
 export const useSalaryContext = () => useContext(SalaryContext);
 
 export const SalaryProvider = ({ children }) => {
