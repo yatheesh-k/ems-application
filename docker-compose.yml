@@ -8,7 +8,7 @@ services:
   identity-image:
     image: identity-image:latest
     ports:
-      - "8191:8191"
+      - "8192:8191"
     networks:
       - my_network
   employee-image:
