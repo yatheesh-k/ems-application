@@ -14,7 +14,7 @@ services:
   employee-image:
     image: employee-image:latest
     ports:
-      - "8090:8090"
+      - "8091:8090"
     networks:
       - my_network
 networks:
