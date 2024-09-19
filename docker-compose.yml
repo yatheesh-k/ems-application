@@ -1,0 +1,22 @@
+services:
+  ui-image:
+    image: ui-image:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - my_network
+  identity-image:
+    image: identity-image:latest
+    ports:
+      - "8191:8191"
+    networks:
+      - my_network
+  employee-image:
+    image: employee-image:latest
+    ports:
+      - "8090:8090"
+    networks:
+      - my_network
+networks:
+  my_network:
+    driver: bridge
