@@ -2,7 +2,7 @@ services:
   ui-image:
     image: ui-image:latest
     ports:
-      - "3000:3000"
+      - "3001:3000"
     networks:
       - my_network
   identity-image:
